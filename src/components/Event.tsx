@@ -1,16 +1,29 @@
-import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { useNavigation } from '@react-navigation/native';
+import { StyleSheet, Text, View, Button, Pressable } from 'react-native';
 import { EventInterface } from './types';
 
 
-export default function Event({ event: {name, location, date } }: { event: EventInterface }) {
-  
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+
+type StackParams = {
+  Events: undefined;
+  Tickets: { eventId: string };
+}
+type NavigationProps = NativeStackNavigationProp<StackParams>;
+
+export default function Event({ event: {name, location, date, id} }: { event: EventInterface }) {
+  const navigation = useNavigation<NavigationProps>();
+  console.log('events: ', id)
   return (
+    <>
     <View style={row}>
-      <Text style={column}> {name}</Text>
+      <Pressable style={column} onPress={() => { navigation.navigate('Tickets', {eventId: id})}}>
+        <Text>{name}</Text>
+      </Pressable>
       <Text style={column}> {location}</Text>
       <Text style={column}> {String(date).slice(0,10)}</Text>
     </View>
+    </>
   )
 }
 
