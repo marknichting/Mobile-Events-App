@@ -10,10 +10,10 @@ export interface EventInterface {
 
 
 export interface TicketInterface {
-  section: string;
-  row: Date;
-  seat: string;
-  price: Date;
+  section: number;
+  row: number;
+  seat: number;
+  price: string;
   available: boolean;
   id: string;
   eventId: string;

@@ -1,7 +1,7 @@
 import React  from "react";
 import Event from "../components/Event";
 import { render, screen, fireEvent } from '@testing-library/react-native';
-import { EventInterface } from "../components/types";
+import { EventInterface } from "../types";
 
 let event:EventInterface = {
 "name": "laparoscope",
